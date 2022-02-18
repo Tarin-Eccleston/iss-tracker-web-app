@@ -15,6 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-flask-server": "cd server && flask_env/bin/flask  run",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -39,5 +40,6 @@
   },
   "devDependencies": {
     "@iconify/react": "^3.1.3"
-  }
+  },
+  "proxy": "http://127.0.0.1:5000/"
 }
