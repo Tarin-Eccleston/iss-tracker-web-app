@@ -18,7 +18,8 @@ function App() {
 
   return (
     <div>
-      <Map />
+      {/* <Map /> */}
+      <h1>{backendData.alt}</h1>
     </div>
   );
 }
