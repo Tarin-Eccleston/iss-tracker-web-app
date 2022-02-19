@@ -13,6 +13,7 @@ app = Flask(__name__)
 # Todo: load TLE data from api only ONCE. Then update the coordinates whenever called.
 
 @app.route('/server', methods=['GET'])
+
 def server():
     # Make request to ISS API for TLE data lines
     f = requests.get('https://api.wheretheiss.at/v1/satellites/25544/tles?format=text')
