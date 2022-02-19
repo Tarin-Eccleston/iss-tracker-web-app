@@ -21,7 +21,7 @@ def main():
     ts = skyfield.api.load.timescale()
     satellite = EarthSatellite(line1, line2, name, ts)
 
-    dt = 0.02
+    dt = 1
 
     while True:
         t = ts.now()
@@ -36,9 +36,7 @@ def main():
         alt = wgs84.height_of(geocentric)
         alt = alt.km
         
-        print(lat)
-        print(lng)
-        print(alt)
+        print(lat,",",lng,",",alt)
         sys.stdout.flush()
     
         time.sleep(dt)

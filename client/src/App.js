@@ -6,7 +6,7 @@ function App() {
 
   // passing in empty array only runs on first load
   useEffect(() => {
-    fetch('/api').then(
+    fetch('/server').then(
       response => response.json()
     ).then(
       data => {
@@ -19,7 +19,7 @@ function App() {
   return (
     <div>
       {/* <Map /> */}
-      <h1>{backendData.alt}</h1>
+      <h1>{backendData.lat}</h1>
     </div>
   );
 }
