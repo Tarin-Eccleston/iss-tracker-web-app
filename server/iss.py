@@ -4,6 +4,7 @@ import datetime
 from black import main
 import requests
 import skyfield
+import sys
 from skyfield.api import EarthSatellite, wgs84
 
 def main():
@@ -20,21 +21,27 @@ def main():
     ts = skyfield.api.load.timescale()
     satellite = EarthSatellite(line1, line2, name, ts)
 
-    t = ts.now()
+    dt = 0.02
 
-    geocentric = satellite.at(t)
-    # v = satellite.at(t).velocity()
+    while True:
+        t = ts.now()
 
-    lat, lng = wgs84.latlon_of(geocentric)
-    lat = lat.degrees
-    lng = lng.degrees
+        geocentric = satellite.at(t)
+        # v = satellite.at(t).velocity()
 
-    alt = wgs84.height_of(geocentric)
-    alt = alt.km
+        lat, lng = wgs84.latlon_of(geocentric)
+        lat = lat.degrees
+        lng = lng.degrees
+
+        alt = wgs84.height_of(geocentric)
+        alt = alt.km
+        
+        print(lat)
+        print(lng)
+        print(alt)
+        sys.stdout.flush()
     
-    print(lat)
-    print(lng)
-    print(alt)
+        time.sleep(dt)
 
 if __name__ == "__main__":
     main()
