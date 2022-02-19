@@ -32,7 +32,9 @@ def main():
     alt = wgs84.height_of(geocentric)
     alt = alt.km
     
-    return alt, lat, lng
+    print(lat)
+    print(lng)
+    print(alt)
 
 if __name__ == "__main__":
     main()
