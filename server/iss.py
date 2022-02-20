@@ -21,7 +21,7 @@ def main():
     ts = skyfield.api.load.timescale()
     satellite = EarthSatellite(line1, line2, name, ts)
 
-    dt = 1
+    dt = 0.016
 
     while True:
         t = ts.now()
