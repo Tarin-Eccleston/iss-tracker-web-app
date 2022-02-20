@@ -15,6 +15,10 @@ class Map extends React.Component {
   componentDidMount(){
       this.getCoordinates()
       this.interval = setInterval(this.getCoordinates, 16)
+      // this.map.panTo({
+      //   lat: this.state.center.lat, lng: this.state.center.lng
+      // })
+      this.recenterMap()
   }
 
   componentWillUnmount(){
@@ -33,11 +37,24 @@ class Map extends React.Component {
           }))
   }
 
+  recenterMap() {
+    // const map = this.map;
+    const current = this.state.center;
+
+    // const google = this.props.google;
+    // const maps = google.maps;
+
+    if (this.map) {
+      this.map.panTo(this.state.center);
+    }
+  }
+
   render() {
     return (
       <div className="map">
         <GoogleMapReact
-            bootstrapURLKeys={{ key: 'AIzaSyCK2eAYFSo7KaKJCSQjzkhb2fJYSWlM_TA' }}
+            // bootstrapURLKeys={{ key: 'AIzaSyCK2eAYFSo7KaKJCSQjzkhb2fJYSWlM_TA' }}
+            bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}
             defaultCenter={ this.state.center }
             defaultZoom={ this.state.zoom }
         >
@@ -46,15 +63,6 @@ class Map extends React.Component {
       </div>
     )
   }
-}
-
-Map.defaultProps = {
-    center: {
-        lat: 42.3265,
-        lng: -122.8756
-    },
-    alt: 0,
-    zoom: 10
 }
 
 export default Map

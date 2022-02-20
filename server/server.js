@@ -5,6 +5,7 @@ const app = express();
 var lat = 0.0
 var lng = 0.0
 var alt = 0.0
+var direction = 0.0
 
 let options = {
     mode: 'text',
@@ -20,9 +21,11 @@ pyshell.on('message', function (message) {
     lat = parseFloat(message[0])
     lng = parseFloat(message[1])
     alt = parseFloat(message[2])
-    console.log("lat: ",lat);
-    console.log("lng: ",lng);
-    console.log("alt: ",alt);
+    // direction = parseFloat(message[3])
+    console.log("lat: ", lat);
+    console.log("lng: ", lng);
+    console.log("alt: ", alt);
+    // console.log("direction: ", direction);
 });
 
 // end the input stream and allow the process to exit 
@@ -32,11 +35,12 @@ pyshell.end(function (err) {
 });
 
 // function call for server request from React client
-app.get("/server",(req,res,next)=>{
+app.get("/server",(req, res, next)=>{
     res.json({
         'lat': lat,
         'lng': lng,
-        'alt': alt
+        'alt': alt,
+        // 'direction': direction
     })
 });
 
