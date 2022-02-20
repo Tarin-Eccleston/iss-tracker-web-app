@@ -1,15 +1,21 @@
 import GoogleMapReact from 'google-map-react'
+import GoogleApiWrapper from 'google-map-react'
 import LocationMarker from './LocationMarker'
 import React from 'react'
 
 class Map extends React.Component {
+  constructor(props) {
+    super(props)
+    this.myRef = React.createRef()
+  }
+
   state = {
-      center: {
-          lat: 0,
-          lng: 0
-      },
-      alt: 0,
-      zoom: 10
+    center: {
+        lat: 0,
+        lng: 0
+    },
+    alt: 0,
+    zoom: 10
   }
 
   componentDidMount(){
@@ -18,7 +24,7 @@ class Map extends React.Component {
       // this.map.panTo({
       //   lat: this.state.center.lat, lng: this.state.center.lng
       // })
-      this.recenterMap()
+      // this.recenterMap()
   }
 
   componentWillUnmount(){
@@ -38,14 +44,14 @@ class Map extends React.Component {
   }
 
   recenterMap() {
-    // const map = this.map;
+    const map = this.myRef;
     const current = this.state.center;
+    const google = this.props.google;
+    const maps = google.maps;
 
-    // const google = this.props.google;
-    // const maps = google.maps;
-
-    if (this.map) {
-      this.map.panTo(this.state.center);
+    if (map) {
+      let center = new maps.LatLng(current.lat, current.lng);
+      map.panTo(center);
     }
   }
 
@@ -53,12 +59,13 @@ class Map extends React.Component {
     return (
       <div className="map">
         <GoogleMapReact
-            // bootstrapURLKeys={{ key: 'AIzaSyCK2eAYFSo7KaKJCSQjzkhb2fJYSWlM_TA' }}
+            ref={this.myRef}
             bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}
             defaultCenter={ this.state.center }
             defaultZoom={ this.state.zoom }
         >
           <LocationMarker lat={this.state.center.lat} lng={this.state.center.lng} />
+          {/* this.recenterMap() */}
         </GoogleMapReact>
       </div>
     )
