@@ -1,4 +1,5 @@
 let {PythonShell} = require('python-shell')
+const path = require('path');
 const express = require('express');
 const app = express();
 
@@ -6,6 +7,9 @@ var lat = 0.0
 var lng = 0.0
 var alt = 0.0
 var direction = 0.0
+
+// Have Node serve the files for our built React app
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 let options = {
     mode: 'text',
