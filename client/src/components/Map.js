@@ -21,7 +21,15 @@ class Map extends React.Component {
   componentDidMount(){
       this.getCoordinates()
       this.interval = setInterval(this.getCoordinates, 16)
-      // this.myRef.current.recenterMap()
+    
+      // const current = this.state.center;
+      // const google = this.props.google;
+      // const maps = google.maps;
+      // let center = new maps.LatLng(current.lat, current.lng);
+      // this.myRef.current.panTo(center);
+      console.log(this.props.google)
+
+      // console.log(this.myRef)
   }
 
   componentWillUnmount(){
@@ -61,7 +69,6 @@ class Map extends React.Component {
             defaultZoom={ this.state.zoom }
         >
           <LocationMarker lat={this.state.center.lat} lng={this.state.center.lng} />
-          {/* this.recenterMap() */}
         </GoogleMapReact>
       </div>
     )
