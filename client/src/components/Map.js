@@ -1,6 +1,4 @@
 import GoogleMapReact from 'google-map-react'
-import GoogleApiWrapper from 'google-map-react'
-// import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import LocationMarker from './LocationMarker'
 import React from 'react'
 
@@ -24,11 +22,11 @@ class Map extends React.Component {
       this.interval = setInterval(this.getCoordinates, 16)
     
       // const current = this.state.center;
-      // const google = this.props.google;
+      // const google = this.myRef.google;
       // const maps = google.maps;
       // let center = new maps.LatLng(current.lat, current.lng);
-      // this.myRef.current.panTo(center);
-      console.log(this.myRef.google)
+      // this.myRef.current.fitBounds(center);
+      // console.log(this.myRef.google)
 
       // console.log(this.myRef)
   }
@@ -64,6 +62,7 @@ class Map extends React.Component {
     return (
       <div className="map">
         <GoogleMapReact
+            google={this.google}
             ref={this.myRef}
             bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}
             defaultCenter={ this.state.center }

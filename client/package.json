@@ -4,6 +4,7 @@
   "proxy": "http://localhost:8000/",
   "private": true,
   "dependencies": {
+    "@googlemaps/react-wrapper": "^1.1.24",
     "@mui/icons-material": "^5.4.2",
     "@react-google-maps/api": "^2.7.0",
     "@testing-library/jest-dom": "^5.16.2",
