@@ -1,5 +1,6 @@
 import GoogleMapReact from 'google-map-react'
 import GoogleApiWrapper from 'google-map-react'
+// import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import LocationMarker from './LocationMarker'
 import React from 'react'
 
@@ -27,7 +28,7 @@ class Map extends React.Component {
       // const maps = google.maps;
       // let center = new maps.LatLng(current.lat, current.lng);
       // this.myRef.current.panTo(center);
-      console.log(this.props.google)
+      console.log(this.myRef.google)
 
       // console.log(this.myRef)
   }
