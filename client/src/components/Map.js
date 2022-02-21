@@ -15,16 +15,13 @@ class Map extends React.Component {
         lng: 0
     },
     alt: 0,
-    zoom: 10
+    zoom: 1
   }
 
   componentDidMount(){
       this.getCoordinates()
       this.interval = setInterval(this.getCoordinates, 16)
-      // this.map.panTo({
-      //   lat: this.state.center.lat, lng: this.state.center.lng
-      // })
-      // this.recenterMap()
+      // this.myRef.current.recenterMap()
   }
 
   componentWillUnmount(){
@@ -44,14 +41,13 @@ class Map extends React.Component {
   }
 
   recenterMap() {
-    const map = this.myRef;
     const current = this.state.center;
     const google = this.props.google;
     const maps = google.maps;
 
-    if (map) {
+    if (this.myRef.current) {
       let center = new maps.LatLng(current.lat, current.lng);
-      map.panTo(center);
+      this.myRef.current.panTo(center);
     }
   }
 
