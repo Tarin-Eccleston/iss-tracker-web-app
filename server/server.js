@@ -2,6 +2,7 @@ let {PythonShell} = require('python-shell')
 const path = require('path');
 const express = require('express');
 const app = express();
+app.use('/static', express.static('../client/build'))
 
 var lat = 0.0
 var lng = 0.0
