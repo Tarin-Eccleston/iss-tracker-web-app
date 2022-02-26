@@ -8,8 +8,8 @@ var lng = 0.0
 var alt = 0.0
 var direction = 0.0
 
-app.use('/static', express.static('../client/build'))
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+// app.use('/static', express.static('../client/build'))
+app.use(express.static(path.resolve(__dirname, 'public')));
 
 let options = {
     mode: 'text',
@@ -48,9 +48,10 @@ app.get("/server",(req, res, next)=>{
     })
 });
 
-// const PORT = process.env.PORT || 8000;
-// app.listen(PORT,()=>console.log(`Server connected to ${port}`));
+app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+});
 
-app.listen(process.env.PORT || 3001, '0.0.0.0', () => {
+app.listen(process.env.PORT || 8000, '0.0.0.0', () => {
     console.log("Server is running.");
   });
