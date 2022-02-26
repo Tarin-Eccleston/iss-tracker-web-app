@@ -1,7 +1,7 @@
 {
   "name": "iss-tracker-web-app",
   "version": "0.1.0",
-  "proxy": "http://localhost:8000/",
+  "proxy": "https://iss-tracker-web-app.herokuapp.com/",
   "private": true,
   "dependencies": {
     "@googlemaps/react-wrapper": "^1.1.24",

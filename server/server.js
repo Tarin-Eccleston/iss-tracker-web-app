@@ -2,15 +2,14 @@ let {PythonShell} = require('python-shell')
 const path = require('path');
 const express = require('express');
 const app = express();
-app.use('/static', express.static('../client/build'))
 
 var lat = 0.0
 var lng = 0.0
 var alt = 0.0
 var direction = 0.0
 
-// Have Node serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+// app.use('/static', express.static('../client/build'))
+// app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 let options = {
     mode: 'text',
@@ -49,5 +48,9 @@ app.get("/server",(req, res, next)=>{
     })
 });
 
-const port=8000;
-app.listen(port,()=>console.log(`Server connected to ${port}`));
+// const PORT = process.env.PORT || 8000;
+// app.listen(PORT,()=>console.log(`Server connected to ${port}`));
+
+app.listen(process.env.PORT || 3001, '0.0.0.0', () => {
+    console.log("Server is running.");
+  });
