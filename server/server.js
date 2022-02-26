@@ -8,8 +8,8 @@ var lng = 0.0
 var alt = 0.0
 var direction = 0.0
 
-// app.use('/static', express.static('../client/build'))
-// app.use(express.static(path.resolve(__dirname, '../client/build')));
+app.use('/static', express.static('../client/build'))
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 let options = {
     mode: 'text',
